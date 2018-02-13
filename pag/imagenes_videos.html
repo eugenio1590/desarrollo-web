@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Imagenes y Videos</title>
+<style type="text/css">
+  section {
+	  float: left;
+	  margin: 5px;
+	  text-align:center;
+  }
+  
+  section article {
+	  display: inline-block;
+	  float: unset;
+	  padding: 25px;
+  }
+  
+  section.splash {
+	  float: initial;
+  }
+  
+  .picture img {
+	  border:solid #999 2px;
+	  padding: 5px;
+  }
+</style>
+</head>
+<body>
+	<section class="splash picture">
+    	<picture>
+      		<source media="(min-width: 1000px)" srcset="../images/hielo4.jpg">
+      		<source media="(min-width: 800px)" srcset="../images/hielo3.jpg">
+      		<source media="(min-width: 600px) " srcset="../images/hielo2.jpg">
+      		<source media="(min-width: 300px)“srcset="../images/hielo1.jpg">
+      		<img src="../images/hielo1.jpg" alt="pingüinos" />
+    	</picture>
+  	</section>
+	<section>
+    	<iframe width="600" height="330"
+    	src="https://www.youtube.com/embed/4tV6bzk3_6c" frameborder="0" allowfullscreen autohide>
+    	</iframe>
+        <article class="picture">
+        	<img src="../images/001-bailarin.svg" alt="bailarin" width="200" height="200" />
+            <p>designed by <em>Scenic Arts</em> from <a href="https://www.flaticon.es/">Flaticon</a></p>
+        </article>
+  	</section>
+</body>
+</html>
