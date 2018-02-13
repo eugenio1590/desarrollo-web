@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (max-width: 800px){
+	nav, aside {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 750px){
+	.logo {
+		display: none;
+	}
+}
