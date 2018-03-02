@@ -48,7 +48,7 @@ function wholePart(){
 
 function initOper(operValue){
 	oper = operValue;
-	pend = num.value;
+	pend = Number(num.value);
 	cleanAll();
 }
 
@@ -73,7 +73,7 @@ function elevate(){
 }
 
 function calculate(){
-	if (oper === "+"){ num.value = pend + num.value }
+	if (oper === "+"){ num.value = pend + Number(num.value) }
 	else if (oper === "-"){ num.value = pend - num.value }
 	else if (oper === "*"){ num.value = pend * num.value }
 	else if (oper === "/"){ divide(pend, +num.value); }
