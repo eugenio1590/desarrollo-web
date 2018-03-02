@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+table {
+	border: solid #306699 3px;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+tr, td {
+	border: none;
+	padding: 2px;
+}
+
+table input {
+	font-size: small;
+}
+
+table button {
+	background-color: #e6eef7;
+	font-size: x-small;
+	min-height: 34px;
+	padding: 5px;
+	text-align: center;
+}
+
+table input, table button {
+	border: solid #306699 2px;
+}
+
+section, table input, table button {
+	width: 100%;
+	height: 100%;
+}
+
+.error {
+	color: red;
+	font-size: xx-small;
+}

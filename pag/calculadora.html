@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculadora</title>
+<link rel="stylesheet" type="text/css" href="../css/calculadora.css"/>
+<script type="text/javascript" src="../js/calculadora.js"></script>
+</head>
+
+<body onload="init()">
+	<h1>Buenos días, bienvenido a la calculadora de Eugenio Caicedo</h1>
+    <section>
+    <table width="200" border="1">
+        <tr>
+        	<td colspan="4">
+            	<input type="text" name="num" id="num" onclick="cleanAll()" />
+            </td>
+        </tr>
+        <tr>
+        	<td colspan="4">
+            	<p id="error" class="error"></p>
+            </td>
+        </tr>
+  		<tr>
+    		<td>
+            	<button onclick="pow()">x<sup>2</sup></button>
+            </td>
+    		<td>
+            	<button onclick="inverse()">1/x</button>
+            </td>
+    		<td>
+            	<button onclick="sqrt()">&radic;x</button>
+            </td>
+            <td>
+            	<button onclick="wholePart()">&#91;x&#93;</button>
+            </td>
+  		</tr>
+  		<tr>
+    		<td>
+            	<button onclick="sum()">+</button>
+            </td>
+    		<td>
+            	<button onclick="subtraction()">-</button>
+            </td>
+    		<td>
+            	<button onclick="multiplication()">*</button>
+            </td>
+            <td>
+            	<button onclick="division()">/</button>
+            </td>
+  		</tr>
+  		<tr>
+    		<td>
+            	<button onclick="elevate()">x<sup>y</sup></button>
+            </td>
+            <td colspan="3">
+            	<button onclick="calculate()">=</button>
+            </td>
+  		</tr>
+	</table>
+    </section>
+</body>
+</html>
