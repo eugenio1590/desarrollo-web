@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculadora</title>
+<link rel="stylesheet" type="text/css" href="../css/calculadora.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/calculadora_jquery.js"></script>
+</head>
+
+<body>
+	<h1>Buenos días, bienvenido a la calculadora de Eugenio Caicedo</h1>
+    <section>
+    <table width="200" border="1">
+        <tr>
+        	<td colspan="4">
+            	<input type="text" name="num" id="num" />
+            </td>
+        </tr>
+        <tr>
+        	<td colspan="4">
+            	<p id="error" class="error"></p>
+            </td>
+        </tr>
+  		<tr>
+    		<td>
+            	<button id="btn_pow">x<sup>2</sup></button>
+            </td>
+    		<td>
+            	<button id="btn_inverse">1/x</button>
+            </td>
+    		<td>
+            	<button id="btn_sqrt">&radic;x</button>
+            </td>
+            <td>
+            	<button id="btn_whole_part">&#91;x&#93;</button>
+            </td>
+  		</tr>
+        <tr>
+        	<td>
+            	<button id="btn_potency_of_two">2<sup>x</sup></button>
+            </td>
+            <td>
+            	<button id="btn_n_factorial">n!</button>
+            </td>
+            <td>
+            	<button id="btn_summation">&Sigma;x</button>
+            </td>
+            <td>
+            	<button id="btn_product">&Pi;x</button>
+            </td>
+        </tr>
+  		<tr>
+    		<td>
+            	<button id="btn_sum">+</button>
+            </td>
+    		<td>
+            	<button id="btn_subtraction">-</button>
+            </td>
+    		<td>
+            	<button id="btn_multiplication">*</button>
+            </td>
+            <td>
+            	<button id="btn_division">/</button>
+            </td>
+  		</tr>
+  		<tr>
+    		<td>
+            	<button id="btn_elevate">x<sup>y</sup></button>
+            </td>
+            <td colspan="3">
+            	<button id="btn_calculate">=</button>
+            </td>
+  		</tr>
+	</table>
+    </section>
+</body>
+</html>
