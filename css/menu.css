@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+#accordion {
+	width: 20%;
+}
+
+#menu-container {
+	height: 90vh;
+	border: none;
+	padding: 0px 0px 0px 32px;
+}
+
+#menu .dropdown-menu {
+	padding: 0px;
+}
+
+#menu .dropdown-item:focus, #menu .dropdown-item:hover {
+	color: #333333;
+	background-color: #FFF;
+}
