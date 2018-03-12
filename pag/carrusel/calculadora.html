@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../../css/carrusel.css"/>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="../../js/jquery-ui.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../js/calculadora_jquery.js"></script>
+<script type="text/javascript" src="../../js/calculadora_memory.js"></script>
+</head>
+
+<body>
+    <div class="container">
+    	<nav class="navbar navbar-expand-lg navbar-dark bg-info rounded my-2">
+        	<div class="container-fluid">
+            	<a class="navbar-brand" href="index.html">MOOC</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miMenu" aria-controls="miMenu" aria-expanded="false" aria-label="Toggle navigation">
+                	<span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="miMenu">
+                	<ul class="navbar-nav mr-auto">
+                    	<li class="nav-item"><a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a></li>
+                    	<li class="nav-item"><a class="nav-link" href="puzzle.html">PUZZLE</a></li>
+                    	<li class="nav-item active"><a class="nav-link" href="calculadora.html">CALCULADORA</a></li>
+                  	</ul>
+                </div>
+			</div>
+        </nav>
+        <div class="row my-3">
+    		<div class="col col-lg-5 col-md-5 col-sm-12">
+            	<table class="table table-bordered table-sm">
+                	<tr>
+                    	<td colspan="4" class="box">
+                        	<input type="text" class="form-control" placeholder="0" name="num" id="num" />
+                        </td>
+                        <tr>
+                        	<td colspan="4" class="d-none">
+                            	<p id="error" class="text-danger"></p>
+                            </td>
+        				</tr>
+                        <tr class="text-center">
+                        	<td colspan="2"><button class="btn bg-info text-white" id="btn_to_m">ToM</button></td>
+                            <td colspan="2"><button class="btn bg-info text-white" id="btn_from_m">FromM</button></td>
+                        </tr>
+                        <tr class="text-center">
+    						<td><button class="btn bg-info text-white" id="btn_pow">x<sup>2</sup></button></td>
+                            <td><button class="btn bg-info text-white" id="btn_inverse">1/x</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_sqrt">&radic;x</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_whole_part">&#91;x&#93;</button></td>
+                        </tr>
+                        <tr class="text-center">
+                        	<td><button class="btn bg-info text-white" id="btn_potency_of_two">2<sup>x</sup></button></td>
+                            <td><button class="btn bg-info text-white" id="btn_n_factorial">n!</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_summation">&Sigma;x</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_product">&Pi;x</button></td>
+                        </tr>
+                        <tr class="text-center">
+                        	<td><button class="btn bg-info text-white" id="btn_sum">+</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_subtraction">-</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_multiplication">*</button></td>
+                            <td><button class="btn bg-info text-white" id="btn_division">/</button></td>
+                        </tr>
+                        <tr class="text-center">
+                        	<td><button class="btn bg-info text-white" id="btn_elevate">x<sup>y</sup></button></td>
+                            <td colspan="3"><button class="btn bg-info text-white w-100" id="btn_calculate">=</button></td>
+                        </tr>
+                    </tr>
+                </table>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+            	<div id="memory" class="border border-info w-100 h-100 text-center">
+                </div>
+            </div>
+            <div class="col col-lg-4 col-md-12 d-none d-sm-block">
+            	<p>Hacer clic fuera del cajetín y arrastrar para mover a la memoria.</p>
+            	<img src="../../images/explicacion.png" class="img-fluid" />
+            </div>
+        </div>
+        <div class="card-footer my-1">Eugenio Caicedo</div>
+    </div>
+</body>
+</html>

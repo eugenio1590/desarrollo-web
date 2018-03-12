@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+.carousel-inner .carousel-item img {
+	width: 100%;
+	height: auto;
+}
+
+.container .carousel-indicators .active {
+	background-color: orange;
+}
+
+.container .carousel-indicators li {
+	border: 1px solid orange;
+}
+
+.container .panel-footer {
+	margin-top: 20px;
+}

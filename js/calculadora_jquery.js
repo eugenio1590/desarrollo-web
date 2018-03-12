@@ -1,15 +1,32 @@
 // JavaScript Document
-var num, error, oper, pend = 0;
+var num, error, memory, oper, pend = 0;
 
 $(function(){
 	num = $("#num");
 	error = $("#error");
+	memory = $("#memory");
 	
 	num.on("focus", cleanAll);
 	
+	$("#btn_to_m").on("click", function(){
+		addValue(num.val());
+	});
+	
+	$("#btn_from_m").on("click", function(){
+		var children = memory.children();
+		if (children.length > 0){
+			var child = children.last();
+			num.val(+child.html());
+			child.remove();
+			cleanError();
+		} else {
+			setError("* No existen valores en memoria");
+		}
+	});
+	
 	$("#btn_pow").on("click", function(){
 		elevate(num.val(), 2);
-		clean(error);
+		cleanError();
 	});
 	
 	$("#btn_inverse").on("click", function(){
@@ -20,21 +37,21 @@ $(function(){
 		var value = num.val();
 		if (value >= 0){
 			num.val(Math.sqrt(value));
-			clean(error);
+			cleanError();
 		} else {
-			error.html("* Obtencion de un n\u00FAmero complejo");
+			setError("* Obtencion de un n\u00FAmero complejo");
 		}
 	});
 	
 	$("#btn_whole_part").on("click", function(){
 		var value = num.val();
 		num.val((value >= 0) ? Math.floor(value) : -Math.ceil(value));
-		clean(error);
+		cleanError();
 	});
 	
 	$("#btn_potency_of_two").on("click", function(){
 		elevate(2, num.val());
-		clean(error);
+		cleanError();
 	});
 	
 	$("#btn_n_factorial").on("click", function(){
@@ -43,7 +60,7 @@ $(function(){
 			value *= n;
 		}
 		num.val(value);
-		clean(error);
+		cleanError();
 	});
 	
 	$("#btn_summation").on("click", function(){
@@ -89,7 +106,7 @@ $(function(){
 
 function cleanAll(){
 	clean(num);
-	clean(error);
+	cleanError();
 }
 
 function clean(obj){
@@ -97,12 +114,22 @@ function clean(obj){
 	obj.html("");
 }
 
+function cleanError(){
+	clean(error);
+	error.parent().addClass("d-none").removeClass("d-table-cell");
+}
+
+function setError(msj){
+	error.html(msj);
+	error.parent().addClass("d-table-cell").removeClass("d-none");
+}
+
 function divide(op1, op2){
 	if (op2 !== 0){
 		num.val(op1/op2);
-		clean(error);
+		cleanError();
 	} else {
-		error.html("* No se puede dividir por 0");
+		setError("* No se puede dividir por 0");
 	}
 }
 
@@ -116,11 +143,26 @@ function executeOperationInCsvFormat(valInit, callback){
 		total = callback(total, Number(x));
 	});
 	num.val(total);
-	clean(error);
+	cleanError();
 }
 
 function initOper(operValue){
 	oper = operValue;
 	pend = Number(num.val());
 	cleanAll();
+}
+
+function addValue(value){
+	if (value !== ""){
+		newValue = createValue(+value);
+		memory.append(newValue);
+		onValueSaved(newValue); //Esta funcion esta definida en el archivo calculadora_memory.js
+		cleanAll();
+	} else {
+		setError("* Introduzca un n\u00FAmero a guardar");
+	}
+}
+
+function createValue(value){
+	return $("<div class=\"border-info border-bottom value-memory\">"+value+"</div>");
 }

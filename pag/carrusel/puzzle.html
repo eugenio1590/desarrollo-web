@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puzzle</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../../css/carrusel.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/puzzle.css"/>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="../../js/jquery-ui.min.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  $(function() {
+   $( "#sortable" ).sortable();
+   $( "#sortable" ).disableSelection();
+  });
+</script> 
+</head>
+
+<body>
+	<div class="container">
+    	<nav class="navbar navbar-expand-lg navbar-dark bg-info rounded my-2">
+        	<div class="container-fluid">
+            	<a class="navbar-brand" href="index.html">MOOC</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miMenu" aria-controls="miMenu" aria-expanded="false" aria-label="Toggle navigation">
+                	<span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="miMenu">
+                	<ul class="navbar-nav mr-auto">
+                    	<li class="nav-item"><a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a></li>
+                    	<li class="nav-item active"><a class="nav-link" href="puzzle.html">PUZZLE</a></li>
+                    	<li class="nav-item"><a class="nav-link" href="calculadora.html">CALCULADORA</a></li>
+                  	</ul>
+                </div>
+			</div>
+        </nav>
+        <div class="ejercicio">
+        	<ul id="sortable">
+            	<li><img id="p1" src="../../images/puzzle/rafael_8.jpg" alt=""/></li>
+                <li><img id="p2" src="../../images/puzzle/rafael_4.jpg" alt=""/></li>
+                <li><img id="p3" src="../../images/puzzle/rafael_6.jpg" alt=""/></li>
+                <li><img id="p4" src="../../images/puzzle/rafael_2.jpg" alt=""/></li>
+                <li><img id="p5" src="../../images/puzzle/rafael_9.jpg" alt=""/></li>
+                <li><img id="p6" src="../../images/puzzle/rafael_3.jpg" alt=""/></li>
+                <li><img id="p7" src="../../images/puzzle/rafael_7.jpg" alt=""/></li>
+                <li><img id="p8" src="../../images/puzzle/rafael_1.jpg" alt=""/></li>
+                <li><img id="p9" src="../../images/puzzle/rafael_5.jpg" alt=""/></li>
+            </ul>
+            <div class="clear"> </div>
+        </div>
+        <div class="card-footer my-1">Eugenio Caicedo</div>
+	</div>
+</body>
+</html>
