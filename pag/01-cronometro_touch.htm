@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Event Example</title><meta charset="UTF-8">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<style type="text/css">
+  h2 {
+	  padding: 0px 15px;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript">
+  $(function(){ 
+    var t, cl = $("#crono");
+
+    function mostrar()  { cl.html((+cl.html() + 0.1).toFixed(1)); };
+    function arrancar() { t=setInterval(mostrar, 100);};
+    function parar()    { clearInterval(t);  t=undefined; };
+    function cambiar()  { if (!t) arrancar(); else parar(); };
+
+    cl.on('tap', cambiar);
+    $(window).on('swipe', function(){ cl.html("0.0"); });
+  });
+</script>
+</head>
+<body>
+<h2>Cronómetro</h2>
+
+<h2><span id="crono"> 0.0 </span> segundos </h2>
+
+</body>
+</html>
