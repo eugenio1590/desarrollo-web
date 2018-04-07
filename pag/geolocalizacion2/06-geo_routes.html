@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GMaps.js &mdash; Geolocation</title>
+  <script type="text/javascript" src="zepto.min.js"></script>
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyB6EifDf2gROIfEcKglFqpRUc6YZMyRob0"></script>
+  <script type="text/javascript" src="gmaps.js"></script>
+  <link rel="stylesheet" type="text/css" href="mypath.css" />
+  <script type="text/javascript">
+    var map, origin, lat, lng, routes, start_end;
+
+    $(function(){
+	
+	  $("#compactar").on("click", function(){
+      var markers = map.markers;
+      if (markers.length > 2){
+        var markers = markers.slice(1, -1);
+        markers.forEach(function(marker){
+          map.removeMarker(marker);
+        });
+        start_end = [];
+        [routes[0], routes[routes.length-1]].forEach(function(position){
+          guardarStartEnd(position[0], position[1]);
+        });
+      } else {
+        alert("No se puede compactar.");
+      }
+    });
+
+    $("#inicializar").on("click", function(){
+	    routes = [];
+      start_end = [];
+      delete localStorage.routes;
+      delete localStorage.start_end;
+      map.cleanRoute();
+      map.removeMarkers();
+      lat = origin.lat;
+      lng = origin.lng;
+      enlazarMarcador({
+        latLng: {
+          lat: function(){ return origin.lat },
+          lng: function(){ return origin.lng }
+        }
+      }, true, true);
+	  });
+
+      function enlazarMarcador(e, save, drawMarker){
+
+       // muestra ruta entre marcas anteriores y actuales
+        map.drawRoute({
+          origin: [lat, lng],  // origen en coordenadas anteriores
+          // destino en coordenadas del click o toque actual
+          destination: [e.latLng.lat(), e.latLng.lng()],
+          travelMode: 'driving',
+          strokeColor: '#000000',
+          strokeOpacity: 0.6,
+          strokeWeight: 5
+        });
+
+        lat = e.latLng.lat();   // guarda coords para marca siguiente
+        lng = e.latLng.lng();
+
+        if (save === undefined || save){
+          guardarPosition(lat, lng);
+        }
+
+        if (drawMarker === undefined || drawMarker) {
+          map.addMarker({ lat: lat, lng: lng});  // pone marcador en mapa
+        }
+      };
+	  
+	  function guardarPosition(lat, lng){
+	    routes.push([lat, lng]);
+		  localStorage.routes = JSON.stringify(routes);
+	  }
+
+    function guardarStartEnd(lat, lng){
+      start_end.push([lat, lng]);
+      localStorage.start_end = JSON.stringify(start_end);
+    }
+
+    function checkStartOrEnd(lat, lng){
+      var valid = false;
+      start_end.forEach(function(position){
+        valid |= (position[0] === lat && position[1] === lng);
+      });
+      return valid;
+    }
+
+      function geolocalizar(){
+        GMaps.geolocate({
+          success: function(position){
+            lat = position.coords.latitude;  // guarda coords en lat y lng
+            lng = position.coords.longitude;
+
+            localStorage.routes = localStorage.routes || JSON.stringify([[lat, lng]]);
+            routes = JSON.parse(localStorage.routes);
+
+            localStorage.start_end = localStorage.start_end || JSON.stringify([]);
+            start_end = JSON.parse(localStorage.start_end);
+
+            map = new GMaps({  // muestra mapa centrado en coords [lat, lng]
+              el: '#map',
+              lat: lat,
+              lng: lng,
+              click: enlazarMarcador,
+              tap: enlazarMarcador
+            });
+            origin = { lat: lat, lng: lng};
+            if (routes.length > 0) {
+              var count = 0;
+              routes.forEach(function(route, i){
+                var drawMarker = start_end.length === 0; // Si no tiene un principio y fin, se debe marcar siempre la posc
+                if (!drawMarker) { // Si se tiene un principio y fin, se debe buscar estas posc y compactar
+                  if (count < 2) { // Si aun no se ha encontrato el principio y el fin
+                    if (checkStartOrEnd(route[0], route[1])) { //Si la posc es un principio y fin
+                      drawMarker = true; //Se debe marcar
+                      count++; //Se cuenta
+                    } else { // Sino, no se marca, se compacta
+                      drawMarker = false;
+                    }
+                  } else { // Ya se encontraron los marcadores de principio y fin, se debe marcar fuera de la compactacion
+                    drawMarker = true;
+                  }
+                }
+                enlazarMarcador({
+                  latLng: {
+                    lat: function(){ return route[0] },
+                    lng: function(){ return route[1] }
+                  }
+                }, false, drawMarker);
+              });
+            } else {
+              map.addMarker(origin);  // marcador en [lat, lng]
+            }
+          },
+          error: function(error) { alert('Geolocalización falla: '+error.message); },
+          not_supported: function(){ alert("Su navegador no soporta geolocalización"); },
+        });
+      };
+
+      geolocalizar();
+    });
+  </script>
+</head>
+<body>
+  <h1>Geolocalización</h1>
+
+  <div id="map"></div>
+  
+  <button id="inicializar">Inicializar</button>
+  <button id="compactar">Compactar</button>
+</body>
+</html>
